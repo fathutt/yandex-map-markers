@@ -1,11 +1,18 @@
-define('yandex-map-markers', [
-    'domReady',
-    'jquery',
-    'underscore',
-    'backbone',
-    'jquery.scrollTo',
-    'jquery.happymodal'
-], function (domReady, $, _, Backbone) {
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define('yandex-map-markers', [
+                'domReady',
+                'jquery',
+                'underscore',
+                'backbone',
+                'jquery.scrollTo',
+                'jquery.happymodal'
+            ], factory);
+    } else {
+        root.YandexMapMarkers = factory(root.domReady, root.$, root._, root.Backbone);
+    }
+}(this, function (domReady, $, _, Backbone) {
     'use strict';
 
     console.log('%cfile: yandex-map-markers.js', 'color: #C2ECFF');
@@ -1080,4 +1087,5 @@ define('yandex-map-markers', [
     };
 
     return Map;
-});
+
+}));
